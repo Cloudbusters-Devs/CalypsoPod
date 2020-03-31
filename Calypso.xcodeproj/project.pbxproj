@@ -10,6 +10,9 @@
 		5578CAB52433880600B0E5EF /* Calypso.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5578CAAB2433880600B0E5EF /* Calypso.framework */; };
 		5578CABA2433880600B0E5EF /* CalypsoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5578CAB92433880600B0E5EF /* CalypsoTests.swift */; };
 		5578CABC2433880600B0E5EF /* Calypso.h in Headers */ = {isa = PBXBuildFile; fileRef = 5578CAAE2433880600B0E5EF /* Calypso.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5578CAC624338AB700B0E5EF /* CKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5578CAC524338AB700B0E5EF /* CKManager.swift */; };
+		5578CAC824338ACB00B0E5EF /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5578CAC724338ACB00B0E5EF /* Generics.swift */; };
+		5578CACA24338ADA00B0E5EF /* Extensions Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5578CAC924338ADA00B0E5EF /* Extensions Module.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,9 @@
 		5578CAB42433880600B0E5EF /* CalypsoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalypsoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5578CAB92433880600B0E5EF /* CalypsoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalypsoTests.swift; sourceTree = "<group>"; };
 		5578CABB2433880600B0E5EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5578CAC524338AB700B0E5EF /* CKManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKManager.swift; sourceTree = "<group>"; };
+		5578CAC724338ACB00B0E5EF /* Generics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generics.swift; sourceTree = "<group>"; };
+		5578CAC924338ADA00B0E5EF /* Extensions Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions Module.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,9 @@
 			children = (
 				5578CAAE2433880600B0E5EF /* Calypso.h */,
 				5578CAAF2433880600B0E5EF /* Info.plist */,
+				5578CAC524338AB700B0E5EF /* CKManager.swift */,
+				5578CAC724338ACB00B0E5EF /* Generics.swift */,
+				5578CAC924338ADA00B0E5EF /* Extensions Module.swift */,
 			);
 			path = Calypso;
 			sourceTree = "<group>";
@@ -148,6 +157,7 @@
 				TargetAttributes = {
 					5578CAAA2433880600B0E5EF = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 					5578CAB32433880600B0E5EF = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -195,6 +205,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5578CACA24338ADA00B0E5EF /* Extensions Module.swift in Sources */,
+				5578CAC624338AB700B0E5EF /* CKManager.swift in Sources */,
+				5578CAC824338ACB00B0E5EF /* Generics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +353,7 @@
 		5578CAC02433880600B0E5EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -355,6 +369,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cloudbusters.ADA.Calypso;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -363,6 +378,7 @@
 		5578CAC12433880600B0E5EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -386,6 +402,7 @@
 		5578CAC32433880600B0E5EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CalypsoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -403,6 +420,7 @@
 		5578CAC42433880600B0E5EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = CalypsoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
