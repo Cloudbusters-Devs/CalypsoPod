@@ -12,9 +12,9 @@ import Foundation
 
 class CloudKitManager {
     
-    static let objIdentifier: String = "GenericOBJ"
-    static let bookIndentifier: String = "Book"
-    static let Ask_anio: String = "LibroParecchioAskanio"
+    public static let objIdentifier: String = "GenericOBJ"
+    public static let bookIndentifier: String = "Book"
+    public static let serial: String = "Serialized_Object"
     
     fileprivate var container : CKContainer
     fileprivate var publicDB : CKDatabase
@@ -26,13 +26,30 @@ class CloudKitManager {
         privateDB = container.privateCloudDatabase
     }
     
-    static var CKManagerSharedInstance: CloudKitManager = {
+    public static var CKManagerSharedInstance: CloudKitManager = {
         return CloudKitManager.init()
     }()
     
-    func saveGeneric(g: Generics.Obj<String>) {
+    public func saveSerializable(item: FullSerializable) {
+        let disProps = item.disassembleDic()
+        let prop_values = disProps.1
         
-        let record = CKRecord(recordType: CloudKitManager.Ask_anio)
+        let record = CKRecord(recordType: CloudKitManager.serial)
+        
+        record.setValue(prop_values, forKey: "values")
+        
+        publicDB.save(record, completionHandler: { (record, error) -> Void in
+            if let e = error {
+                print(e)
+            } else {
+                print("Object stored succefully")
+            }
+        })
+    }
+    
+    public func saveGeneric(g: Generics.Obj<String>) {
+        
+        let record = CKRecord(recordType: CloudKitManager.serial)
         
         record.setValue(g.value, forKey: "value")
         
@@ -45,14 +62,14 @@ class CloudKitManager {
         })
     }
     
-    func deleteRecordWithID(_ recordID: CKRecord.ID, completion: ((_ recordID: CKRecord.ID?, _ error: Error?) -> Void)?) {
+    public func deleteRecordWithID(_ recordID: CKRecord.ID, completion: ((_ recordID: CKRecord.ID?, _ error: Error?) -> Void)?) {
 
         publicDB.delete(withRecordID: recordID) { (recordID, error) in
             completion?(recordID, error)
         }
     }
 
-    func deleteRecordsWithID(_ recordIDs: [CKRecord.ID], completion: ((_ records: [CKRecord]?, _ recordIDs: [CKRecord.ID]?, _ error: Error?) -> Void)?) {
+    public func deleteRecordsWithID(_ recordIDs: [CKRecord.ID], completion: ((_ records: [CKRecord]?, _ recordIDs: [CKRecord.ID]?, _ error: Error?) -> Void)?) {
 
         let operation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: recordIDs)
         operation.savePolicy = .ifServerRecordUnchanged
@@ -62,7 +79,7 @@ class CloudKitManager {
         publicDB.add(operation)
     }
     
-    func retrieveStringGenerics(completition: @escaping ([Generics.Obj<String>], Error?) -> Void) {
+    public func retrieveStringGenerics(completition: @escaping ([Generics.Obj<String>], Error?) -> Void) {
         
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: CloudKitManager.objIdentifier, predicate: predicate)
@@ -81,7 +98,7 @@ class CloudKitManager {
         }
     }
     
-    func retrieveDoubleGenerics(completition: @escaping ([Generics.Obj<Double>], Error?) -> Void) {
+    public func retrieveDoubleGenerics(completition: @escaping ([Generics.Obj<Double>], Error?) -> Void) {
         
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: CloudKitManager.objIdentifier, predicate: predicate)
@@ -100,7 +117,7 @@ class CloudKitManager {
         }
     }
     
-    func retrieveBooleanGenerics(completition: @escaping ([Generics.Obj<Bool>], Error?) -> Void) {
+    public func retrieveBooleanGenerics(completition: @escaping ([Generics.Obj<Bool>], Error?) -> Void) {
         
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: CloudKitManager.objIdentifier, predicate: predicate)
@@ -119,7 +136,7 @@ class CloudKitManager {
         }
     }
     
-    func retrieveTrueGeneric<I: TrueGeneric, O: TrueGeneric>
+    public func retrieveTrueGeneric<I: TrueGeneric, O: TrueGeneric>
         (types: types_<I, O>, completition: @escaping (types_<I, O>, [Generics.Obj<I>], Error?) -> Void) {
         
         let predicate = NSPredicate(value: true)
@@ -152,7 +169,7 @@ class CloudKitManager {
     
 
     
-    func __fetch__<I : TrueGeneric, O: TrueGeneric>(types: (I, O)) -> [Generics.Obj<O>] {
+    public func __fetch__<I : TrueGeneric, O: TrueGeneric>(types: (I, O)) -> [Generics.Obj<O>] {
         
         var objs: [Generics.Obj<O>] = []
         
@@ -173,5 +190,5 @@ class CloudKitManager {
     }
 }
 
-typealias types_<I, O> = (i: I, o: O)
+public typealias types_<I, O> = (i: I, o: O)
 

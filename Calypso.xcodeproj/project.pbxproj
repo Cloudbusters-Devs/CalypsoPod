@@ -13,6 +13,7 @@
 		5578CAC624338AB700B0E5EF /* CKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5578CAC524338AB700B0E5EF /* CKManager.swift */; };
 		5578CAC824338ACB00B0E5EF /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5578CAC724338ACB00B0E5EF /* Generics.swift */; };
 		5578CACA24338ADA00B0E5EF /* Extensions Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5578CAC924338ADA00B0E5EF /* Extensions Module.swift */; };
+		5578CACC2435E01700B0E5EF /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5578CACB2435E01700B0E5EF /* Serializable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 		5578CAC524338AB700B0E5EF /* CKManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKManager.swift; sourceTree = "<group>"; };
 		5578CAC724338ACB00B0E5EF /* Generics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generics.swift; sourceTree = "<group>"; };
 		5578CAC924338ADA00B0E5EF /* Extensions Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions Module.swift"; sourceTree = "<group>"; };
+		5578CACB2435E01700B0E5EF /* Serializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				5578CAC524338AB700B0E5EF /* CKManager.swift */,
 				5578CAC724338ACB00B0E5EF /* Generics.swift */,
 				5578CAC924338ADA00B0E5EF /* Extensions Module.swift */,
+				5578CACB2435E01700B0E5EF /* Serializable.swift */,
 			);
 			path = Calypso;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5578CACC2435E01700B0E5EF /* Serializable.swift in Sources */,
 				5578CACA24338ADA00B0E5EF /* Extensions Module.swift in Sources */,
 				5578CAC624338AB700B0E5EF /* CKManager.swift in Sources */,
 				5578CAC824338ACB00B0E5EF /* Generics.swift in Sources */,

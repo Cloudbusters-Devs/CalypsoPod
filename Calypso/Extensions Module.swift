@@ -27,12 +27,13 @@
 
 import Foundation
 
-public protocol Genericable: Codable                  { static func __default__() -> TrueGeneric             }
-public protocol Numerable   : Genericable             { func __repr__() -> TrueGeneric                       }
-public protocol Stringable  : Genericable             { func __str__() ->  TrueGeneric                       }
-public protocol Booleanable : Numerable               { func __bool__() -> TrueGeneric                       }
-public protocol TrueGeneric : Booleanable, Stringable { func __typ__()  -> TrueGeneric.Type
-                                                        func __to__(t: TrueGeneric.Type) -> TrueGeneric      }
+public protocol Genericable : Codable                       { static func __default__() -> TrueGeneric        }
+public protocol Numerable   : Genericable                   { func __repr__() -> TrueGeneric                  }
+public protocol Stringable  : Genericable                   { func __str__() ->  TrueGeneric                  }
+public protocol Booleanable : Numerable                     { func __bool__() -> TrueGeneric                  }
+public protocol TrueGeneric : Booleanable, Stringable       { func __typ__()  -> TrueGeneric.Type
+    func __to__(t: TrueGeneric.Type) -> TrueGeneric }
+public protocol FullSerializable: TrueGeneric, Serializable {                                                 }
 
 extension Int      : TrueGeneric {
     public func __repr__()                  -> TrueGeneric      { return Double(self)                        }
